@@ -1,0 +1,10 @@
+# Exact versions used for the submitted model and the write-up.
+numpy==1.26.4
+pandas==2.3.3
+scikit-learn==1.6.1
+lightgbm==4.6.0
+scipy==1.15.3
+pyarrow==20.0.0
+matplotlib==3.10.3
+requests==2.32.5
+python-docx==1.1.2
