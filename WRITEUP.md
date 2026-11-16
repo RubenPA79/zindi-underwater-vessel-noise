@@ -167,6 +167,35 @@ prediction is a property of the **window**, not of the passage. Four times the
 clips, cleaner cuts, three more vessel classes — the model keeps answering the
 same question about the same feature.
 
+## 6b. Is near-exact recovery possible?
+
+If the added energy could be identified rather than estimated, the share would be
+almost exact: `share = E_added / E_total`, and `E_total` is already known from the
+released values. We tested the two ways that could work, and both failed. We report
+them because they bound what the released information allows.
+
+**Can the background be recognised?** If the test backgrounds were the released
+recordings, a window could be matched to its source and subtracted. Comparing every
+test minute against all 420,825 archive minutes, *after removing any smooth channel
+response*, gives a best residual of 0.01–0.16 dB — which looks like a copy until one
+runs the control: archive windows matched against *other* archive windows reach
+0.004 dB through the same search over half a million candidates. With channel models
+from quadratic to degree eight the test is never better than the control (median
+ratio 0.66–0.86). **The test backgrounds are not in the released archive.**
+
+**Can the background be estimated from the window?** On synthetic mixtures where the
+truth is known — true clip, true offset, true channel — estimating the background
+with a per-band polynomial fit and subtracting gives **RMSE 0.27**, with a bias of
++0.22: the natural variability of a real background is attributed to the addition.
+That is worse than the model we submitted, and it is an upper bound on any
+background-free method.
+
+Together these bound the achievable score: with the released audio, the addition can
+be *predicted* to about ρ ≈ 0.53, not *recovered*. Scores far above that are not
+explainable from the released information alone, and we deliberately did not chase
+them. A demonstrated ceiling is more useful to the field than a number we cannot
+attribute.
+
 ## 7. Relative activity map
 
 ![Relative activity](figures/activity_map.png)
